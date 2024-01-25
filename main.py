@@ -4,9 +4,18 @@ from colorama import init, Fore
 from GameData import GameData
 import requests
 import re
+import sys
+
+show_warnings=False
 
 # init colorama
 init(autoreset=True)
+
+def print_link(text, link):
+    sys.stdout.write("\x1b]8;;" + link + "\x1b\\")
+    sys.stdout.write(text)
+    sys.stdout.write("\x1b]8;;\x1b\\")
+    print() # line break
 
 def scrap_wishlist(steamid):
     page_number = 0
@@ -52,14 +61,16 @@ def get_gamedata(game_name) -> GameData:
         #
 
     except (requests.exceptions.RequestException, AttributeError, ValueError, KeyboardInterrupt) as e:
-        print(f'{Fore.YELLOW}Coming soon... - {game_name}')
+        if show_warnings: print(f'{Fore.YELLOW}Coming soon... - {game_name}')
         return 
 
-    return GameData(game_name, keyshop_price, official_price)
+    return GameData(game_name, keyshop_price, official_price, url)
 
 def process_wishlist(wishlist_item):
     data = get_gamedata(wishlist_item)
-    if data: print(data)
+    if data: 
+        print(data, end="")
+        print_link(data.game_name, data.url)
 
 wishlists = scrap_wishlist(steamid=76561198164066871)
 
