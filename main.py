@@ -1,10 +1,12 @@
 from bs4 import BeautifulSoup
+from concurrent.futures import ThreadPoolExecutor
+from colorama import init, Fore
+from GameData import GameData
 import requests
 import re
-from concurrent.futures import ThreadPoolExecutor
 
-from GameData import GameData
-
+# init colorama
+init(autoreset=True)
 
 def scrap_wishlist(steamid):
     page_number = 0
@@ -20,7 +22,6 @@ def scrap_wishlist(steamid):
         page_number += 1
     return sorted(games_list)
 
-
 def get_gamedata(game_name) -> GameData:
     url = f'https://gg.deals/game/{game_name.replace(' ', '-').replace(':','')}/'
 
@@ -29,13 +30,9 @@ def get_gamedata(game_name) -> GameData:
         response.raise_for_status()  # Raise an exception for HTTP errors
         
         # Keyshop Price
-        try:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            lowest_span = soup.find('span', class_ = "game-lowest-current-details")
-            soup = BeautifulSoup(str(lowest_span.contents), 'html.parser') # another soup that gets only the lowest spans
-        except AttributeError as a:
-            print(f"We can't get data for this game {game_name}")
-            return
+        soup = BeautifulSoup(response.text, 'html.parser')
+        lowest_span = soup.find('span', class_ = "game-lowest-current-details")
+        soup = BeautifulSoup(str(lowest_span.contents), 'html.parser') # another soup that gets only the lowest spans
 
         keyshop_price = soup.find('span', class_ = 'price-inner numeric').get_text(strip=True)
         keyshop_price = re.sub(r'[^\d,]', '', keyshop_price) # using regex to parse the number
@@ -44,13 +41,9 @@ def get_gamedata(game_name) -> GameData:
         #
 
         # Official Price
-        try:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            official_span = soup.find('span', class_ = "price")
-            soup = BeautifulSoup(str(official_span.contents), 'html.parser') # another soup that gets only the official price span
-        except AttributeError as a:
-            print(f"We can't get data for this game {game_name}")
-            return
+        soup = BeautifulSoup(response.text, 'html.parser')
+        official_span = soup.find('span', class_ = "price")
+        soup = BeautifulSoup(str(official_span.contents), 'html.parser') # another soup that gets only the official price span
 
         official_price = soup.find('span', class_ = 'price-inner numeric').get_text(strip=True)
         official_price = re.sub(r'[^\d,]', '', official_price) # using regex to parse the number
@@ -58,8 +51,8 @@ def get_gamedata(game_name) -> GameData:
         official_price = float(official_price)
         #
 
-    except requests.exceptions.RequestException as e:
-        print(f'Error fetching HTML data - {game_name}')
+    except (requests.exceptions.RequestException, AttributeError, ValueError, KeyboardInterrupt) as e:
+        print(f'{Fore.YELLOW}Coming soon... - {game_name}')
         return 
 
     return GameData(game_name, keyshop_price, official_price)

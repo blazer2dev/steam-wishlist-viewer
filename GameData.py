@@ -1,3 +1,5 @@
+from colorama import Back, Fore, Style
+
 class GameData:
     def __init__(self, game_name, keyshop_price, official_price):
         self.game_name = game_name
@@ -5,4 +7,4 @@ class GameData:
         self.official_price = official_price
 
     def __str__(self) -> str:
-        return f'{self.keyshop_price} Keyshop - {self.official_price} Official - {self.game_name}'
+        return f'{Fore.CYAN}{self.keyshop_price}{Style.RESET_ALL} Keyshop - {Fore.GREEN}{self.official_price}{Style.RESET_ALL} Official - {self.game_name}'
