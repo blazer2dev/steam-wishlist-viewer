@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
-import random
+from concurrent.futures import ThreadPoolExecutor
 
 from GameData import GameData
 
@@ -64,10 +64,14 @@ def get_gamedata(game_name) -> GameData:
 
     return GameData(game_name, keyshop_price, official_price)
 
+def process_wishlist(wishlist_item):
+    data = get_gamedata(wishlist_item)
+    if data: print(data)
 
 wishlists = scrap_wishlist(steamid=76561198164066871)
 
-data = get_gamedata(wishlists[random.randint(0, len(wishlists))])
-for wishlist in wishlists:
-    data = get_gamedata(wishlist)
-    if data: print(data.__str__())
+with ThreadPoolExecutor(max_workers=4) as exec:
+    futures = [exec.submit(process_wishlist, wishlist) for wishlist in wishlists]
+
+    for future in futures:
+        future.result()
