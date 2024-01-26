@@ -6,6 +6,7 @@ import requests
 import re
 import sys
 
+# when game is still coming soon or if we can't parse the html etc
 show_warnings=False
 
 # init colorama
@@ -77,6 +78,6 @@ wishlists = scrap_wishlist(inp if inp != '' else 76561198164066871)
 
 with ThreadPoolExecutor(max_workers=4) as exec:
     futures = [exec.submit(process_wishlist, wishlist) for wishlist in wishlists]
-     
+        
     for future in futures:
         future.result()
