@@ -72,10 +72,11 @@ def process_wishlist(wishlist_item):
         print(data, end="")
         print_link(data.game_name, data.url)
 
-wishlists = scrap_wishlist(steamid=76561198164066871)
+inp = input('SteamID: ')
+wishlists = scrap_wishlist(inp if inp != '' else 76561198164066871)
 
 with ThreadPoolExecutor(max_workers=4) as exec:
     futures = [exec.submit(process_wishlist, wishlist) for wishlist in wishlists]
-
+     
     for future in futures:
         future.result()
