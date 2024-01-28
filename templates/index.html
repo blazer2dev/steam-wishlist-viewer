@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Game Deals</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/scrollControl.js')}}" defer></script>
+</head>
+
+<body>
+    <div class="content">
+        <form action="/submit" method="POST">
+            <div class="banner">
+                <h1>Game Deals</h1>
+                <p>Enter your SteamID</p>
+                <input type="number" placeholder="00000000000000000" name="steamid_input"></input>
+                <button type="submit" name="submit_button">Submit</button>
+            </div>
+        </form>
+
+        <div class="bar">
+            {% for data in game_datas %}
+            <div class="deal_container">
+                <div class="deal_banner"></div>
+                <span><a href="https://www.youtube.com/">{{data.game_name}}</a></span>
+                <span class="keyshop_price">{{data.keyshop_price}}</span>
+                <span class="official_price">{{data.official_price}}</span>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+from flask import Blueprint, render_template, request
+import requests
+from wishlistScraper import WishlistScraper
+
+bp = Blueprint('routes', __name__)
+
+@bp.route('/')
+def index():
+    return render_template('index.html')
+
+@bp.route('/submit', methods=['POST'])
+def submit():
+    steamid = request.form['steamid_input']
+
+    try:
+        steamid = int(steamid)
+    except TypeError as e:
+        print(f"Can't parse ID into int: {e}")
+
+    scraper = WishlistScraper()
+    wishlists = scraper.scrap_wishlist(steamid)
+    game_datas = scraper.enable_threads(wishlists)
+
+    print(game_datas)
+
+    return render_template('index.html', game_datas=game_datas)
