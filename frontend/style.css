@@ -4,26 +4,30 @@
     font-family: sans-serif;
 }
 
-body {
+body,
+html {
     background-image: linear-gradient(to bottom left, rgb(23, 23, 23), rgb(8, 8, 8));
-    height: 100vh;
+    height: 120%;
 }
 
 .content {
     color: rgb(262, 266, 229);
-    text-align: center;
     font-weight: bold;
 
     top: 60px;
     position: relative;
 }
 
-.content h1 {
+.banner {
+    text-align: center;
+}
+
+.banner h1 {
     padding: 10px;
     font-size: 3em;
 }
 
-.content input {
+.banner input {
     width: 200px;
     padding: 16px 0;
     text-align: center;
@@ -36,18 +40,18 @@ body {
     cursor: text
 }
 
-.content input[type="number"]::-webkit-inner-spin-button {
+.banner input[type="number"]::-webkit-inner-spin-button {
     display: none;
 }
 
-.content input[type="number"] {
+.banner input[type="number"] {
     -moz-appearance: textfield;
 }
 
-.content button {
+.banner button {
+    text-align: center;
     width: 200px;
     padding: 16px 0;
-    text-align: center;
     margin: 20px 10px;
     border-radius: 26px;
     font-weight: bolder;
@@ -68,5 +72,47 @@ body {
     background-color: rgba(0, 0, 0, 0.267);
     height: 100vh;
     margin: auto;
+    padding: 1%;
     max-width: 800px;
+}
+
+.deal_container {
+    background-color: rgba(255, 255, 255, 0.063);
+    width: 30%;
+    height: 250px;
+    margin: 1.3% 1.5%;
+    float: left;
+    position: relative;
+}
+
+.deal_container span {
+    position: absolute;
+    bottom: 0px;
+    margin: 10px;
+}
+
+.deal_container .keyshop_price {
+    color: yellow;
+    bottom: 17px;
+}
+
+.deal_container .official_price {
+    color: rgb(53, 250, 168);
+    bottom: 17px;
+    left: 70px;
+}
+
+.deal_container a {
+    color: white;
+}
+
+.deal_container a:active {
+    color: rgba(255, 255, 255, 0.253);
+}
+
+.deal_banner {
+    background-image: linear-gradient(to bottom, rgb(35, 35, 35), rgb(14, 14, 14));
+    width: 100%;
+    height: 77%;
+    margin: auto;
 }
