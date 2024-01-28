@@ -23,6 +23,7 @@ def submit():
     for wishlist in wishlists:
         game_datas.append(scraper.get_gamedata(wishlist))
         
-    print(game_datas)
+    for data in game_datas:
+        if data: print(data.img_url)
 
     return render_template('index.html', game_datas=[x for x in game_datas if x is not None])

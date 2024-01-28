@@ -64,11 +64,20 @@ class WishlistScraper:
             official_price = float(official_price)
             #
 
+            # Image URL
+            soup = BeautifulSoup(response.text, 'html.parser')
+            img_div = soup.find('div', class_ = "d-flex flex-align-center game-info-image platform-ribbon-container")
+            soup = BeautifulSoup(str(img_div.contents), 'html.parser') # another soup that gets only the official price span
+
+            img_url = soup.find('img').get('src')
+            #
+            
+
         except (requests.exceptions.RequestException, AttributeError, ValueError, KeyboardInterrupt) as e:
             if self.show_warnings: print(f'{Fore.YELLOW}Coming soon... - {game_name}')
             return 
 
-        return GameData(game_name, keyshop_price, official_price, url)
+        return GameData(game_name, keyshop_price, official_price, url, img_url)
 
     #def process_wishlist(self, wishlist_item):
         data = self.get_gamedata(wishlist_item)
