@@ -21,7 +21,7 @@ class WishlistScraper:
         sys.stdout.write("\x1b]8;;\x1b\\")
         print() # line break
 
-    def scrap_wishlist(self, steamid):
+    def scrap_wishlist(self, steamid: int):
         page_number = 0
         games_list = []
         while True:
