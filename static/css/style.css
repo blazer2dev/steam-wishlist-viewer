@@ -74,11 +74,13 @@ body {
 .bar {
     position: relative;
     top: 20px;
+    bottom: 20px;
 
     background-color: rgba(0, 0, 0, 0.267);
     margin: auto;
     min-height: 100vh;
-    padding: 1%;
+    padding: 1.2%;
+    padding-bottom: 5%;
     overflow: auto;
     max-width: 800px;
     border-radius: 20px;
