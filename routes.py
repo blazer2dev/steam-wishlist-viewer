@@ -19,8 +19,10 @@ def submit():
 
     scraper = WishlistScraper()
     wishlists = scraper.scrap_wishlist(steamid)
-    game_datas = scraper.enable_threads(wishlists)
-
+    game_datas = []
+    for wishlist in wishlists:
+        game_datas.append(scraper.get_gamedata(wishlist))
+        
     print(game_datas)
 
-    return render_template('index.html', game_datas=game_datas)
+    return render_template('index.html', game_datas=[x for x in game_datas if x is not None])

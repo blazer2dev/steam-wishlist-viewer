@@ -26,7 +26,7 @@
             {% for data in game_datas %}
             <div class="deal_container">
                 <div class="deal_banner"></div>
-                <span><a href="https://www.youtube.com/">{{data.game_name}}</a></span>
+                <span><a href={{data.url}}>{{data.game_name}}</a></span>
                 <span class="keyshop_price">{{data.keyshop_price}}</span>
                 <span class="official_price">{{data.official_price}}</span>
             </div>

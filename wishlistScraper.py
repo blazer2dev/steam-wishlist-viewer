@@ -70,13 +70,13 @@ class WishlistScraper:
 
         return GameData(game_name, keyshop_price, official_price, url)
 
-    def process_wishlist(self, wishlist_item):
+    #def process_wishlist(self, wishlist_item):
         data = self.get_gamedata(wishlist_item)
         if data: 
             print(data, end="")
             self.print_link(data.game_name, data.url)
 
-    def enable_threads(self, wishlists):
+    #def enable_threads(self, wishlists):
         with ThreadPoolExecutor(max_workers=4) as exec:
             futures = [exec.submit(self.process_wishlist, wishlist) for wishlist in wishlists]
             
