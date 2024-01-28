@@ -18,6 +18,14 @@ body {
     position: relative;
 }
 
+.content footer {
+    position: fixed;
+    bottom: 0;
+    margin: 1%;
+    font-weight: lighter;
+    z-index: 1;
+}
+
 .banner {
     text-align: center;
     min-height: 230px;
