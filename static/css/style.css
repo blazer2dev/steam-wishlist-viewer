@@ -28,7 +28,7 @@ body {
 
 .banner {
     text-align: center;
-    min-height: 230px;
+    min-height: 300px;
 }
 
 .banner h1 {
@@ -86,9 +86,7 @@ body {
 
 .bar {
     position: relative;
-    top: 35px;
     bottom: 20px;
-
     background-color: rgba(0, 0, 0, 0.267);
     margin: auto;
     min-height: 100vh;
