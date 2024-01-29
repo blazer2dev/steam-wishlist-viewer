@@ -118,26 +118,15 @@ body {
 
 .deal_container span {
     position: absolute;
-    bottom: 0px;
     margin: 10px;
-}
-
-.deal_container .keyshop_price {
-    color: rgb(245, 195, 49);
-    bottom: 20px;
-    font-size: small;
-}
-
-.deal_container .official_price {
-    color: rgb(59, 101, 294);
-    bottom: 20px;
-    font-size: small;
-    right: 7px;
+    z-index: 2;
 }
 
 .deal_container a {
     color: white;
-    text-decoration-color: rgba(255, 255, 255, 0.454)
+    text-decoration-color: rgba(255, 255, 255, 0.454);
+    font-weight: bolder;
+    font-size: larger
 }
 
 .deal_container a:active {
@@ -151,6 +140,23 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.deal_banner .keyshop_price {
+    color: rgb(240 211 94);
+    top: 0px;
+    left: 5px;
+    font-size: large;
+    text-shadow: 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px;
+}
+
+.deal_banner .official_price {
+    color: #5cecdc;
+    top: 30px;
+    left: 5px;
+    font-size: large;
+    text-shadow: 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px;
+}
+
 
 .deal_gradient {
     position: relative;
