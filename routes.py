@@ -12,7 +12,7 @@ def index():
 @bp.route('/submit', methods=['POST', 'GET'])
 def submit():
     steamid = request.form['steamid_input']
-    template_prof = Profile("https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg")
+    template_prof = Profile("Profesorek23", "https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg")
     fake = True
 
     if fake:

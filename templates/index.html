@@ -17,6 +17,7 @@
         <div class="profile">
             {% if profile %}
             <img src={{profile.prof_img_url}}>
+            <span>{{profile.prof_name}}</span>
             {% endif%}
         </div>
         <form id="submit_form" action="/submit" method='POST'>

@@ -168,9 +168,10 @@ body {
 
 .profile {
     position: fixed;
-    top: 0px;
+    top: 25px;
     left: 0px;
     size: 100px 100px;
+    max-width: 185px;
     background-color: #181818;
     border-radius: 26px;
     overflow: hidden;
@@ -181,4 +182,11 @@ body {
 
 .profile img {
     transform: scale(1.1);
+    border-radius: 26px;
+}
+
+.profile span {
+    margin: 15px;
+    display: block;
+    text-align: center;
 }
