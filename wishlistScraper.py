@@ -4,7 +4,6 @@ from colorama import init, Fore
 from GameData import GameData
 import requests
 import re
-import sys
 
 class WishlistScraper:
 
@@ -14,12 +13,6 @@ class WishlistScraper:
 
         # init colorama
         init(autoreset=True)
-
-    def print_link(self, text, link):
-        sys.stdout.write("\x1b]8;;" + link + "\x1b\\")
-        sys.stdout.write(text)
-        sys.stdout.write("\x1b]8;;\x1b\\")
-        print() # line break
 
     def scrap_wishlist(self, steamid: int):
         page_number = 0
