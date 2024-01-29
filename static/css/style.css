@@ -14,7 +14,6 @@ body {
     color: rgb(262, 266, 229);
     font-weight: bold;
 
-    top: 60px;
     position: relative;
 }
 
@@ -33,12 +32,17 @@ body {
 }
 
 .banner h1 {
+    margin-top: 5vh;
     padding: 10px;
-    font-size: 3em;
+    font-size: 5em;
+}
+
+.banner p {
+    font-size: 1.5em;
 }
 
 .banner input {
-    width: 200px;
+    width: 300px;
     padding: 16px 0;
     text-align: center;
     margin: 20px 10px;
@@ -60,7 +64,7 @@ body {
 
 .banner button {
     text-align: center;
-    width: 200px;
+    width: 300px;
     padding: 16px 0;
     margin: 20px 10px;
     border-radius: 26px;
@@ -82,7 +86,7 @@ body {
 
 .bar {
     position: relative;
-    top: 20px;
+    top: 35px;
     bottom: 20px;
 
     background-color: rgba(0, 0, 0, 0.267);
@@ -162,4 +166,21 @@ body {
     position: absolute;
     display: block;
     transform: scale(1.2);
+}
+
+.profile {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    size: 100px 100px;
+    background-color: #181818;
+    border-radius: 26px;
+    overflow: hidden;
+    justify-content: center;
+    margin: 15px;
+    z-index: 2;
+}
+
+.profile img {
+    transform: scale(1.1);
 }

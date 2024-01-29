@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from wishlistScraper import WishlistScraper
 from GameData import GameData
+from Profile import Profile
 
 bp = Blueprint('routes', __name__)
 
@@ -11,15 +12,15 @@ def index():
 @bp.route('/submit', methods=['POST', 'GET'])
 def submit():
     steamid = request.form['steamid_input']
-    
-    fake = False
+    template_prof = Profile("https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg")
+    fake = True
 
     if fake:
-        fake_data = GameData("bobas", 12312, 123132, 'https://img.gg.deals/52/c2/d98a5c9eac66dfb7eb44f998b5751e2f6390_307xr176.jpg', 'https://img.gg.deals/52/c2/d98a5c9eac66dfb7eb44f998b5751e2f6390_307xr176.jpg')
+        fake_data = GameData("Wally and the FANTASTIC PREDATORS", 53.99, 53.99, 'https://gg.deals/game/Wally-and-the-FANTASTIC-PREDATORS/', img_url='https://img.gg.deals/1d/eb/31621b11b2574a269eda6e3b5fd0d9e081da_307xr176.jpg')
         fake_datas = []
         for i in range(100):
             fake_datas.append(fake_data)
-        return render_template('index.html', game_datas=fake_datas)
+        return render_template('index.html', game_datas=fake_datas, profile=template_prof)
 
     try:
         steamid = int(steamid)
@@ -35,4 +36,4 @@ def submit():
     for data in game_datas:
         if data: print(data.img_url)
 
-    return render_template('index.html', game_datas=[x for x in game_datas if x is not None])
+    return render_template('index.html', game_datas=[x for x in game_datas if x is not None], profile=template_prof)

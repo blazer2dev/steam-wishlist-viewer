@@ -14,6 +14,11 @@
 
 <body>
     <div class="content">
+        <div class="profile">
+            {% if profile %}
+            <img src={{profile.prof_img_url}}>
+            {% endif%}
+        </div>
         <form id="submit_form" action="/submit" method='POST'>
             <div class="banner">
                 <h1>Game Deals</h1>
@@ -37,6 +42,7 @@
             </div>
             {% endfor %}
         </div>
+
         <footer>BlazerChlopiec &#169 2024</footer>
     </div>
 </body>
