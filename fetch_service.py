@@ -34,10 +34,19 @@ class FetchService:
         return app_ids
 
     def fetch_game_data(self, app_id) -> GameData:
-        url = f'https://gg.deals/steam/app/{app_id}/'
+        fetch_details_url = f"https://store.steampowered.com/api/appdetails?appids={app_id}"
 
+        url_data = requests.get(fetch_details_url)
+
+        url_data.raise_for_status()
+        json = url_data.json()
+
+        game = json[str(app_id)]["data"]
+        name = game["name"]
+
+        url = f'https://gg.deals/steam/app/{app_id}/'
         image_url = f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
-        return GameData(app_id, 12, 134, url, image_url)
+        return GameData(name, 0, 0, url, image_url)
     
     def fetch_steam_profile(self, profile_id, steam_api) -> Profile:
         fetch_prof_url = f"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={steam_api}&steamids={profile_id}"
