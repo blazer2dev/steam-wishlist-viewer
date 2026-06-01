@@ -13,9 +13,11 @@ def index():
 def submit():
     steamid = request.form['steamid_input']
     template_prof = Profile("Profesorek23", "https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg")
-    fake = False
+    
+    # for debug layout testing
+    layout_test = True
 
-    if fake:
+    if layout_test:
         fake_data = GameData("Wally and the FANTASTIC PREDATORS", 53.99, 53.99, 'https://gg.deals/game/Wally-and-the-FANTASTIC-PREDATORS/', img_url='https://img.gg.deals/1d/eb/31621b11b2574a269eda6e3b5fd0d9e081da_307xr176.jpg')
         fake_datas = []
         for i in range(100):
