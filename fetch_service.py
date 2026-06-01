@@ -73,17 +73,3 @@ class FetchService:
         name = prof["personaname"]
         url = f"https://steamcommunity.com/profiles/{profile_id}/"
         return Profile(name, img_url, url)
-
-
-    #def process_wishlist(self, wishlist_item):
-        data = self.fetch_game_data(wishlist_item)
-        if data: 
-            print(data, end="")
-            self.print_link(data.game_name, data.url)
-
-    #def enable_threads(self, wishlists):
-        with ThreadPoolExecutor(max_workers=4) as exec:
-            futures = [exec.submit(self.process_wishlist, wishlist) for wishlist in wishlists]
-            
-        for future in futures:
-            future.result()
