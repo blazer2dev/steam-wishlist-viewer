@@ -9,11 +9,11 @@ bp = Blueprint('routes', __name__)
 def index():
     return render_template('index.html')
 
-@bp.route('/submit', methods=['POST', 'GET'])
+@bp.route('/submit', methods=['GET'])
 def submit():
 
-    # grab profile_id from form
-    profile_id = request.form['profile_id_input']
+    # grab profile_id from GET
+    profile_id = request.args.get("id")
 
     try:
         profile_id = int(profile_id)
