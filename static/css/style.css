@@ -135,7 +135,7 @@ body {
     justify-content: center;
 }
 
-.deal_banner .keyshop_price {
+.deal_banner .official_price {
     color: rgb(240 211 94);
     top: 0px;
     left: 5px;
@@ -143,14 +143,13 @@ body {
     text-shadow: 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px;
 }
 
-.deal_banner .official_price {
+.deal_banner .keyshop_price {
     color: #5cecdc;
     top: 30px;
     left: 5px;
     font-size: large;
     text-shadow: 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px #000, 0px 0px 20px;
 }
-
 
 .deal_gradient {
     position: relative;
