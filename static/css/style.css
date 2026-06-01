@@ -69,6 +69,7 @@ body {
     margin: 20px 10px;
     border-radius: 26px;
     font-weight: bolder;
+    font-size: large;
     border: 2px solid rgb(266, 224, 99);
     background: transparent;
     color: white;
@@ -122,15 +123,11 @@ body {
     z-index: 2;
 }
 
-.deal_container a {
+.deal_container span {
     color: white;
     text-decoration-color: rgba(255, 255, 255, 0.454);
     font-weight: bolder;
     font-size: larger
-}
-
-.deal_container a:active {
-    color: rgba(255, 255, 255, 0.253);
 }
 
 .deal_banner {
