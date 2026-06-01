@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from wishlist_scraper import Requests
+from wishlist_scraper import WishlistScraper
 from game_data import GameData
 from profile import Profile
 
@@ -29,7 +29,7 @@ def submit():
     except TypeError as e:
         print(f"Can't parse ID into int: {e}")
 
-    scraper = Requests()
+    scraper = WishlistScraper()
 
     app_ids = scraper.get_wishlist_app_ids(profile_id)
 
