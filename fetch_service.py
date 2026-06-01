@@ -11,6 +11,16 @@ class FetchService:
         # init colorama
         init(autoreset=True)
 
+    def resolve_vanity_profile_id(self, profile_id: str, steam_api) -> int:
+        url = f"https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key={steam_api}&vanityurl={profile_id}"
+        url_data = requests.get(url)
+
+        url_data.raise_for_status()
+
+        json = url_data.json()
+
+        return json["response"]["steamid"]
+
     def get_wishlist_app_ids(self, profile_id: int):
         url = f"https://api.steampowered.com/IWishlistService/GetWishlist/v1/?steamid={profile_id}"
         url_data = requests.get(url)

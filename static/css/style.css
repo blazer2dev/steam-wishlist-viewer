@@ -59,13 +59,13 @@ body {
     outline: none;
 }
 
-.banner input[type="number"]::-webkit-inner-spin-button {
+/* .banner input[type="number"]::-webkit-inner-spin-button {
     display: none;
 }
 
 .banner input[type="number"] {
     -moz-appearance: textfield;
-}
+} */
 
 .banner button {
     text-align: center;

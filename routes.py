@@ -1,7 +1,8 @@
+import os
+
 from flask import Blueprint, render_template, request
 from fetch_service import FetchService
-from game_data import GameData
-from profile import Profile
+from dotenv import load_dotenv
 
 bp = Blueprint('routes', __name__)
 
@@ -12,16 +13,18 @@ def index():
 @bp.route('/submit', methods=['GET'])
 def submit():
 
+    load_dotenv()
+    STEAM_API = os.getenv("STEAM_API")
+
     # grab profile_id from GET
     profile_id = request.args.get("id")
 
-    try:
-        profile_id = int(profile_id)
-    except TypeError as e:
-        print(f"Can't parse ID into int: {e}")
-
-
     fetch_service = FetchService()
+    if profile_id.isdigit():
+        profile_id = int(profile_id)
+    else:
+        profile_id = fetch_service.resolve_vanity_profile_id(profile_id, STEAM_API)
+
     profile = fetch_service.fetch_steam_profile(profile_id)
     app_ids = fetch_service.get_wishlist_app_ids(profile_id)
 
