@@ -13,11 +13,17 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Handlee&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
-    <script src="{{ url_for('static', filename='js/scrollControl.js')}}" defer></script>
-    <script src="{{ url_for('static', filename='js/validate.js')}}" defer></script>
+    <script src="{{ url_for('static', filename='js/overlay-darken.js')}}" defer></script>
 </head>
 
 <body>
+    <div class="overlay" style="display: none;">
+        <h2>Requesting
+            <br>
+            <marquee style="width:0.9em; vertical-align: bottom;">.&nbsp;.&nbsp;.&nbsp;&nbsp;&nbsp;</marquee>
+        </h2>
+    </div>
+
     <div class="content">
         {% if profile %}
         <div class="profile">
@@ -32,7 +38,7 @@
                 <h1>Game Deals</h1>
                 <p>Enter your SteamID</p>
                 <input type="text" placeholder="00000000000000000" name="id"></input>
-                <button type="submit">Submit</button>
+                <button type="submit" onclick="enableOverlay()">Submit</button>
                 <span id="error_log"></span>
             </div>
         </form>
