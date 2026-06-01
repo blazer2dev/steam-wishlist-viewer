@@ -12,7 +12,7 @@ def index():
 @bp.route('/submit', methods=['POST', 'GET'])
 def submit():
     profile_id = request.form['profile_id_input']
-    template_prof = Profile("Profesorek23", "https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg")
+    template_prof = Profile("Profesorek23", "https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg", "https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg")
     
     # for debug layout testing
     layout_test = False
