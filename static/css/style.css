@@ -33,12 +33,11 @@ body {
 
 .banner h1 {
     margin-top: 5vh;
-    padding-bottom: 0px;
-    padding: 10px;
     font-size: 5em;
 }
 
 .banner p {
+    margin-bottom: 20px;
     font-size: 1.5em;
 }
 
@@ -54,7 +53,6 @@ body {
     color: white;
     cursor: text;
     font-size: large;
-
 }
 
 .banner input:focus {
