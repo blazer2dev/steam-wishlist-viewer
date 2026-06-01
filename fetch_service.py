@@ -4,7 +4,7 @@ from colorama import init, Fore
 from game_data import GameData
 import requests
 
-class WishlistScraper:
+class FetchService:
 
     def __init__(self):
         # warnings like - game is still coming soon or if we can't parse the html etc
