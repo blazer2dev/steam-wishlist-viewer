@@ -19,14 +19,14 @@
 
 <body>
     <div class="content">
+        {% if profile %}
         <div class="profile">
-            {% if profile %}
             <a href={{profile.url}} target="_blank">
                 <img src={{profile.img_url}}>
                 <span>{{profile.name}}</span>
             </a>
-            {% endif%}
         </div>
+        {% endif%}
         <form id="submit_form" action="/submit" method='GET'>
             <div class="banner">
                 <h1>Game Deals</h1>

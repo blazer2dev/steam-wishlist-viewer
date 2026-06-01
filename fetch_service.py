@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
 from colorama import init, Fore
 from game_data import GameData
