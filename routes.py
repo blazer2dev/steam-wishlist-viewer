@@ -11,33 +11,25 @@ def index():
 
 @bp.route('/submit', methods=['POST', 'GET'])
 def submit():
-    profile_id = request.form['profile_id_input']
-    template_prof = Profile("Profesorek23", "https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg", "https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg")
-    
-    # for debug layout testing
-    layout_test = False
 
-    if layout_test:
-        fake_data = GameData("Wally and the FANTASTIC PREDATORS", 53.99, 53.99, 'https://gg.deals/game/Wally-and-the-FANTASTIC-PREDATORS/', img_url='https://img.gg.deals/1d/eb/31621b11b2574a269eda6e3b5fd0d9e081da_307xr176.jpg')
-        fake_datas = []
-        for i in range(100):
-            fake_datas.append(fake_data)
-        return render_template('index.html', game_datas=fake_datas, profile=template_prof)
+    # grab profile_id from form
+    profile_id = request.form['profile_id_input']
 
     try:
         profile_id = int(profile_id)
     except TypeError as e:
         print(f"Can't parse ID into int: {e}")
 
-    scraper = FetchService()
 
-    app_ids = scraper.get_wishlist_app_ids(profile_id)
+    fetch_service = FetchService()
+    profile = fetch_service.fetch_steam_profile(profile_id)
+    app_ids = fetch_service.get_wishlist_app_ids(profile_id)
 
     game_datas = []
     for id in app_ids:
-        game_datas.append(scraper.fetch_game_data(id))
+        game_datas.append(fetch_service.fetch_game_data(id))
         
-    for data in game_datas:
-        if data: print(data.img_url)
+    # for data in game_datas:
+        # if data: print(data.img_url)
 
-    return render_template('index.html', game_datas=[x for x in game_datas if x is not None], profile=template_prof)
+    return render_template('index.html', game_datas=[x for x in game_datas if x is not None], profile=profile)

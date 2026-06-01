@@ -2,14 +2,12 @@ from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
 from colorama import init, Fore
 from game_data import GameData
+from profile import Profile
 import requests
 
 class FetchService:
 
     def __init__(self):
-        # warnings like - game is still coming soon or if we can't parse the html etc
-        self.show_warnings=True
-
         # init colorama
         init(autoreset=True)
 
@@ -30,6 +28,13 @@ class FetchService:
 
         image_url = f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
         return GameData(app_id, 12, 134, url, image_url)
+    
+    def fetch_steam_profile(self, profile_id) -> Profile:
+        name = str(profile_id)
+        url = f"https://steamcommunity.com/profiles/{profile_id}/"
+        img_url = f"https://avatars.steamstatic.com/{profile_id}_medium.jpg"
+        return Profile(name, img_url, url)
+
 
     #def process_wishlist(self, wishlist_item):
         data = self.fetch_game_data(wishlist_item)

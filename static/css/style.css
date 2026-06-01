@@ -33,6 +33,7 @@ body {
 
 .banner h1 {
     margin-top: 5vh;
+    padding-bottom: 0px;
     padding: 10px;
     font-size: 5em;
 }
@@ -51,7 +52,13 @@ body {
     border: 2px solid rgb(101, 101, 101);
     background: transparent;
     color: white;
-    cursor: text
+    cursor: text;
+    font-size: large;
+
+}
+
+.banner input:focus {
+    outline: none;
 }
 
 .banner input[type="number"]::-webkit-inner-spin-button {
@@ -69,11 +76,11 @@ body {
     margin: 20px 10px;
     border-radius: 26px;
     font-weight: bolder;
-    font-size: large;
     border: 2px solid rgb(266, 224, 99);
     background: transparent;
     color: white;
-    cursor: pointer
+    cursor: pointer;
+    font-size: large
 }
 
 .banner span {
