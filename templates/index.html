@@ -21,9 +21,9 @@
     <div class="content">
         <div class="profile">
             {% if profile %}
-            <a href={{profile.prof_img_url}}>
-                <img src={{profile.prof_img_url}}>
-                <span>{{profile.prof_name}}</span>
+            <a href={{profile.url}} target="_blank">
+                <img src={{profile.img_url}}>
+                <span>{{profile.name}}</span>
             </a>
             {% endif%}
         </div>

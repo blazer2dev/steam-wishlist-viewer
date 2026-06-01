@@ -25,7 +25,7 @@ def submit():
     else:
         profile_id = fetch_service.resolve_vanity_profile_id(profile_id, STEAM_API)
 
-    profile = fetch_service.fetch_steam_profile(profile_id)
+    profile = fetch_service.fetch_steam_profile(profile_id, STEAM_API)
     app_ids = fetch_service.get_wishlist_app_ids(profile_id)
 
     game_datas = []
