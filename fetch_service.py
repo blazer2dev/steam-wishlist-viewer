@@ -46,7 +46,7 @@ class FetchService:
         try:
             price = game["price_overview"]["final"] / 100
         except:
-            price = "None" # free2play or unreleased
+            price = "---" # free2play or unreleased
             pass
 
         url = f'https://gg.deals/steam/app/{app_id}/'
