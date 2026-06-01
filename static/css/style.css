@@ -129,7 +129,7 @@ body {
 
 .deal_banner {
     width: 100%;
-    height: 78%;
+    height: 82%;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -154,7 +154,7 @@ body {
 
 .deal_gradient {
     position: relative;
-    background-image: linear-gradient(to bottom, transparent, rgba(26, 26, 26));
+    background-image: linear-gradient(to bottom, transparent, rgb(17 17 17));
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -163,7 +163,7 @@ body {
 .deal_banner img {
     position: absolute;
     display: block;
-    height: 195px;
+    height: 205px;
 }
 
 .profile {
