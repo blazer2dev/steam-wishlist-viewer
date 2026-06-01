@@ -43,10 +43,16 @@ class FetchService:
 
         game = json[str(app_id)]["data"]
         name = game["name"]
+        
+        try:
+            price = game["price_overview"]["final"] / 100
+        except:
+            price = "None" # free2play or unreleased
+            pass
 
         url = f'https://gg.deals/steam/app/{app_id}/'
         image_url = f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
-        return GameData(name, 0, 0, url, image_url)
+        return GameData(name, 0, price, url, image_url)
     
     def fetch_steam_profile(self, profile_id, steam_api) -> Profile:
         fetch_prof_url = f"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={steam_api}&steamids={profile_id}"
