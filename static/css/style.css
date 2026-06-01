@@ -4,6 +4,12 @@
     font-family: "Outfit", sans-serif;
 }
 
+body {
+    background-image: linear-gradient(to bottom left, rgb(23, 23, 23), rgb(8, 8, 8));
+    background-attachment: fixed;
+    height: 100%;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -33,11 +39,9 @@
     text-align: center;
 }
 
-
-body {
-    background-image: linear-gradient(to bottom left, rgb(23, 23, 23), rgb(8, 8, 8));
-    background-attachment: fixed;
-    height: 100%;
+.overlay marquee {
+    width: 0.9em;
+    vertical-align: bottom;
 }
 
 .content {
