@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from wishlist_scraper import WishlistScraper
+from wishlist_scraper import Requests
 from game_data import GameData
 from profile import Profile
 
@@ -11,11 +11,11 @@ def index():
 
 @bp.route('/submit', methods=['POST', 'GET'])
 def submit():
-    steamid = request.form['steamid_input']
+    profile_id = request.form['profile_id_input']
     template_prof = Profile("Profesorek23", "https://avatars.cloudflare.steamstatic.com/ada818f27a841be80f9159dde619f958016ff0f2_full.jpg")
     
     # for debug layout testing
-    layout_test = True
+    layout_test = False
 
     if layout_test:
         fake_data = GameData("Wally and the FANTASTIC PREDATORS", 53.99, 53.99, 'https://gg.deals/game/Wally-and-the-FANTASTIC-PREDATORS/', img_url='https://img.gg.deals/1d/eb/31621b11b2574a269eda6e3b5fd0d9e081da_307xr176.jpg')
@@ -25,15 +25,17 @@ def submit():
         return render_template('index.html', game_datas=fake_datas, profile=template_prof)
 
     try:
-        steamid = int(steamid)
+        profile_id = int(profile_id)
     except TypeError as e:
         print(f"Can't parse ID into int: {e}")
 
-    scraper = WishlistScraper()
-    wishlists = scraper.scrap_wishlist(steamid)
+    scraper = Requests()
+
+    app_ids = scraper.get_wishlist_app_ids(profile_id)
+
     game_datas = []
-    for wishlist in wishlists:
-        game_datas.append(scraper.get_gamedata(wishlist))
+    for id in app_ids:
+        game_datas.append(scraper.fetch_game_data(id))
         
     for data in game_datas:
         if data: print(data.img_url)
