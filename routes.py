@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
-from wishlistScraper import WishlistScraper
-from GameData import GameData
-from Profile import Profile
+from wishlist_scraper import WishlistScraper
+from game_data import GameData
+from profile import Profile
 
 bp = Blueprint('routes', __name__)
 
