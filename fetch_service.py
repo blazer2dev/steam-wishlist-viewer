@@ -54,6 +54,11 @@ class FetchService:
         image_url = f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
         return GameData(name, 0, price, url, image_url)
     
+    def fetch_all_game_data(self, app_ids):
+        with ThreadPoolExecutor(max_workers=20) as executor:
+            results = list(executor.map(self.fetch_game_data, app_ids))
+        return results
+
     def fetch_steam_profile(self, profile_id, steam_api) -> Profile:
         fetch_prof_url = f"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={steam_api}&steamids={profile_id}"
 
