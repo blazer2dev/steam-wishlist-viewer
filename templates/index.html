@@ -43,9 +43,9 @@
                 <button type="submit" onclick="enableOverlay()">Submit</button>
 
                 {% if get_flashed_messages() %}
-                <div class="error-container">
+                <div class="error_container">
                     {% for message in get_flashed_messages() %}
-                    <span class="error-log">{{ message }}</span>
+                    <span class="error_log">{{ message }}</span>
                     {% endfor %}
                 </div>
                 {% endif %}
