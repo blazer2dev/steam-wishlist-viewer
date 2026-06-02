@@ -37,3 +37,6 @@ Start the server
 | Key | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `STEAM_KEY` | `string` | **Required** |
+
+<br>
+<img src="static/1.png">
