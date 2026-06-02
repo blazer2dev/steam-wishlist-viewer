@@ -112,7 +112,7 @@ body {
     font-size: large
 }
 
-.banner .error-container {
+.banner .error_container {
     position: fixed;
     bottom: 5%;
     width: 100%;
@@ -120,7 +120,7 @@ body {
     z-index: 2;
 }
 
-.banner .error-log {
+.banner .error_log {
     color: rgb(227, 68, 68);
     display: block;
     font-size: 1.1em;
