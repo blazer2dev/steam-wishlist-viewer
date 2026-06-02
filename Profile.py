@@ -3,3 +3,6 @@ class Profile:
         self.name = name
         self.img_url = img_url
         self.url = url
+
+    def __init__(self):
+        pass
