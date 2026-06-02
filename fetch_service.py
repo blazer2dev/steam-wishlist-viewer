@@ -51,7 +51,10 @@ class FetchService:
 
         url = f'https://gg.deals/steam/app/{app_id}/'
         image_url = f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
-        return GameData(name, 0, price, url, image_url)
+        gd = GameData(name, 0, price, url, image_url)
+
+        print(gd.__str__()) # console
+        return gd
     
     def fetch_all_game_data(self, app_ids):
         with ThreadPoolExecutor(max_workers=20) as executor:
