@@ -4,6 +4,7 @@
 Fetches wishlisted games from a steam profile and lists them accordingly with references to cheaper keyshop deals on third-party websites.
 Made in flask.py
 
+<img src="static/1.png">
 
 ## Run Locally
 
@@ -37,6 +38,3 @@ Start the server
 | Key | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `STEAM_KEY` | `string` | **Required** |
-
-<br>
-<img src="static/1.png">
