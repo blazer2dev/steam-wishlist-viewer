@@ -12,21 +12,15 @@ class FetchService:
 
     def resolve_vanity_profile_id(self, profile_id: str, steam_api) -> int:
         url = f"https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key={steam_api}&vanityurl={profile_id}"
-        url_data = requests.get(url)
-
-        url_data.raise_for_status()
-
-        json = url_data.json()
+    
+        json = self.fetch_json(url)
 
         return json["response"]["steamid"]
 
     def get_wishlist_app_ids(self, profile_id: int):
         url = f"https://api.steampowered.com/IWishlistService/GetWishlist/v1/?steamid={profile_id}"
-        url_data = requests.get(url)
 
-        url_data.raise_for_status()
-
-        json = url_data.json()
+        json = self.fetch_json(url)
 
         app_ids = [item["appid"] for item in json["response"]["items"]]
 
@@ -35,10 +29,7 @@ class FetchService:
     def fetch_game_data(self, app_id) -> GameData:
         fetch_details_url = f"https://store.steampowered.com/api/appdetails?appids={app_id}"
 
-        url_data = requests.get(fetch_details_url)
-
-        url_data.raise_for_status()
-        json = url_data.json()
+        json = self.fetch_json(fetch_details_url)
 
         game = json[str(app_id)]["data"]
         name = game["name"]
@@ -57,21 +48,24 @@ class FetchService:
         return gd
     
     def fetch_all_game_data(self, app_ids):
-        with ThreadPoolExecutor(max_workers=20) as executor:
+        with ThreadPoolExecutor(max_workers=10) as executor:
             results = list(executor.map(self.fetch_game_data, app_ids))
         return results
 
     def fetch_steam_profile(self, profile_id, steam_api) -> Profile:
         fetch_prof_url = f"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={steam_api}&steamids={profile_id}"
 
-        url_data = requests.get(fetch_prof_url)
+        json = self.fetch_json(fetch_prof_url)
 
-        url_data.raise_for_status()
-
-        json = url_data.json()
         prof = json["response"]["players"][0]
         img_url = prof["avatarfull"]
 
         name = prof["personaname"]
         url = f"https://steamcommunity.com/profiles/{profile_id}/"
         return Profile(name, img_url, url)
+    
+    def fetch_json(self, url):
+        url_data = requests.get(url, timeout=10)
+        url_data.raise_for_status()
+
+        return url_data.json()
