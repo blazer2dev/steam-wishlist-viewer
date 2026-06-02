@@ -218,7 +218,7 @@ body {
 .deal_banner img {
     position: absolute;
     display: block;
-    height: 204px;
+    height: 80%;
 }
 
 .profile {
