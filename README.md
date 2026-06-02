@@ -2,7 +2,7 @@
 # steam-wishlist-viewer
 
 Fetches wishlisted games from a steam profile and lists them accordingly with references to cheaper keyshop deals on third-party websites.
-Made in flask.py
+Server written in flask.py
 
 <img src="static/1.png">
 
