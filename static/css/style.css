@@ -216,15 +216,23 @@ body {
 .profile {
     position: fixed;
     top: 25px;
-    left: 0px;
+    left: 25px;
     size: 100px 100px;
     max-width: 185px;
+
     background-color: #181818;
+    transition: background-color 0.1s ease, transform 0.25s ease-in-out;
+
     border-radius: 26px;
     overflow: hidden;
     justify-content: center;
     margin: 15px;
     z-index: 2;
+}
+
+.profile:hover {
+    background-color: #292929;
+    transform: scale(1.05);
 }
 
 .profile img {
