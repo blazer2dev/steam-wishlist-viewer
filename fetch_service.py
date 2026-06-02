@@ -56,7 +56,7 @@ class FetchService:
         image_url = f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg"
         gd = GameData(name, 0, price, url, image_url)
 
-        print(gd.__str__()) # console
+        print(gd) # console
         return gd
     
     def fetch_all_game_data(self, app_ids):

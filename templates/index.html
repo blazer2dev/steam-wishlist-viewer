@@ -43,9 +43,13 @@
                 <input type="text" placeholder="steam_id" name="id"></input>
                 <button type="submit" onclick="enableOverlay()">Submit</button>
 
-                {% for message in get_flashed_messages() %}
-                <span class="error-log">{{ message }}</span>
-                {% endfor %}
+                {% if get_flashed_messages() %}
+                <div class="error-container">
+                    {% for message in get_flashed_messages() %}
+                    <span class="error-log">{{ message }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
         </form>
 

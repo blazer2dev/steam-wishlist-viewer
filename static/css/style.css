@@ -112,9 +112,18 @@ body {
     font-size: large
 }
 
-.banner span {
+.banner .error-container {
+    position: fixed;
+    bottom: 5%;
+    width: 100%;
+    margin: auto;
+    z-index: 2;
+}
+
+.banner .error-log {
     color: rgb(227, 68, 68);
     display: block;
+    font-size: 1.1em;
 }
 
 .content button:hover {

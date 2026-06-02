@@ -9,4 +9,4 @@ class GameData:
         self.img_url = img_url
 
     def __str__(self) -> str:
-        return f'{self.game_name}  {Fore.RED}|||" {Fore.YELLOW}Keyshop: {self.keyshop_price} {Fore.GREEN}Official: {self.official_price}{Style.RESET_ALL}'.strip()
+        return f'{self.game_name}  {Fore.RED}|||" {Fore.YELLOW}Keyshop: {self.keyshop_price} {Fore.GREEN}Official: {self.official_price}{Style.RESET_ALL}'
