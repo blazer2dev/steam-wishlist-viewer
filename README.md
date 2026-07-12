@@ -11,7 +11,7 @@ Server written in flask.py
 Clone the project
 
 ```bash
-  git clone https://github.com/BlazerChlopiec/steam-wishlist-viewer.git
+  git clone https://github.com/blazer2dev/steam-wishlist-viewer.git
 ```
 
 Go to the project directory
